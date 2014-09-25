@@ -65,6 +65,7 @@ int calculating ( float a, float b, float c )
             cor1 = otv1 + otv2;
             cor2 = otv1 - otv2;
     // check do not match if the roots
+
             if ( cor1 = cor2 )
                 printf ( "\tAnswers are: %g", cor1);
             else
