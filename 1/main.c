@@ -32,25 +32,24 @@ int controlvvoda ( int Case )
     return ( coef );
 }
 
-int main ()
+int calculating ( float a, float b, float c )
 {
-    float a, b, c, cor, cor1, cor2, discr, otv1, otv2;
-
-    a = controlvvoda (1);
-
-    b = controlvvoda (2);
-
-    c = controlvvoda (3);
-
+    float cor, cor1, cor2, discr, otv1, otv2 = 0;
 
     discr = b*b - 4*a*c;
 
     // Look to the discriminant was not less than zero
-    if ( discr < 0 )
+    if ( ( discr < 0 ) || ( ( a == 0 ) && ( b == 0 ) && ( c != 0 ) ) )
         printf( "There are not any answers" );
 
     else
     {
+        // consider the case where all coefficients equal to 0
+        if ( ( a == 0 ) && ( b == 0 ) && ( c == 0 ) )
+          printf( "There are infinitely many answers" );
+        else
+
+
         otv1 = sqrt ( discr ) / ( 2*a );
         otv2 = -b / ( 2*a );
 
@@ -72,6 +71,19 @@ int main ()
             printf ( "\tAnswers are: %g, %g", cor1, cor2 );
         }
     }
+}
+
+int main ()
+{
+    float a, b, c = 0;
+
+    a = controlvvoda (1);
+
+    b = controlvvoda (2);
+
+    c = controlvvoda (3);
+
+    calculating ( a, b, c );
 
     return 0;
 }
