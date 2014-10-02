@@ -35,37 +35,40 @@ int calculating ( float a, float b, float c )
     float sqr, discr, ans1, ans2 = 0;
 
 
-    // the case without answers
-    if ( ( discr < 0 ) || ( ( a == 0 ) && ( b == 0 ) && ( c != 0 ) ) )
-        printf( "There are not any answers" );
+    // consider the case where all coefficients equal to 0
+    if ( ( a == 0 ) && ( b == 0 ) && ( c == 0 ) )
+          printf( "There are infinitely many answers" );
 
     else
     {
-        // consider the case where all coefficients equal to 0
-        if ( ( a == 0 ) && ( b == 0 ) && ( c == 0 ) )
-          printf( "There are infinitely many answers" );
-        else
-
-        discr = b*b - 4*a*c;
-        ans1 = sqrt ( discr ) / ( 2*a );
-        ans2 = -b / ( 2*a );
-
-        if ( a == 0 )
+         // consider the case where coefficient a equal to 0
+         if ( a == 0 )
         {
             sqr = -c / b;
 
             printf( "\t%g", sqr);
         }
-
         else
         {
-    // check do not match if the roots
+            discr = b*b - 4*a*c;
 
-            if ( (ans1 + ans2) == (ans1 - ans2) )
-                printf ( "\tAnswers are: %g", ans1 - ans2);
+            // the case without answers
+            if ( ( discr < 0 ) || ( ( a == 0 ) && ( b == 0 ) && ( c != 0 ) ) )
+            printf( "There are not any answers" );
             else
-            printf ( "\tAnswers are: %g, %g", ans1 + ans2, ans1 - ans2 );
+            {
+
+                ans1 = sqrt ( discr ) / ( 2*a );
+                ans2 = -b / ( 2*a );
+
+                // check do not match if the roots
+                if ( (ans1 + ans2) == (ans1 - ans2) )
+                printf ( "\tAnswers are: %g", ans1 - ans2);
+                else
+                    printf ( "\tAnswers are: %g, %g", ans1 + ans2, ans1 - ans2 );
+            }
         }
     }
 }
+
 
