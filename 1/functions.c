@@ -6,7 +6,7 @@ int inputcontrol ( int Case )
 
     int number_was_inputed = 0;
 
-        while ( 1 )
+    while ( 1 )
     {
         if ( Case == 1 ) printf ( "\nInput a coefficient\n" );
 
@@ -32,9 +32,8 @@ int inputcontrol ( int Case )
 
 int calculating ( float a, float b, float c )
 {
-    float cor, discr, ans1, ans2 = 0;
+    float sqr, discr, ans1, ans2 = 0;
 
-    discr = b*b - 4*a*c;
 
     // the case without answers
     if ( ( discr < 0 ) || ( ( a == 0 ) && ( b == 0 ) && ( c != 0 ) ) )
@@ -47,15 +46,15 @@ int calculating ( float a, float b, float c )
           printf( "There are infinitely many answers" );
         else
 
-
+        discr = b*b - 4*a*c;
         ans1 = sqrt ( discr ) / ( 2*a );
         ans2 = -b / ( 2*a );
 
         if ( a == 0 )
         {
-            cor = -c / b;
+            sqr = -c / b;
 
-            printf( "\t%g", cor);
+            printf( "\t%g", sqr);
         }
 
         else
