@@ -42,7 +42,7 @@ int calculating ( float a, float b, float c )
     else
     {
          // consider the case where coefficient a equal to 0
-         if ( a == 0 )
+         if ( (a == 0) && (b != 0) )
         {
             sqr = -c / b;
 
