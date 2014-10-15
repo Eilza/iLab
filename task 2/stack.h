@@ -3,13 +3,17 @@
 #ifndef stack.h
 #define stack.h
 
+struct List
+{
+	int value;
+	struct List* next;
+};
 
 bool isEmpty ( List* stack );
 
-List* push ( List* stack, int i );
+List* Push ( List* stack, int i );
 
-int pop (List* stack);
-
+int Pop(List** stack);
 
 int getCount( List* stack );
 

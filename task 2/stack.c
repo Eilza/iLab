@@ -10,34 +10,63 @@ bool isEmpty( List* stack )
 }
 
 
-List* push( List* stack, int i )
+List* Push( List* stack, int i )
 {
-    for ( int i = 0; i < 1; i++ )
-{
+
 	struct List* temp = stack;
+
 	stack = ( struct List ) calloc ( 1, sizeof( struct List ) );
+
 	stack -> value = i;
+
 	stack -> next = temp;
-}
+
+	return stack;
+
 }
 
-int pop(List* stack)
+int Pop(List** stack)
 {
-    struct List* temp = stack;
-    stack = stack -> next;
+    struct List** temp = *stack;
+
+    (*stack) = (*stack) -> next;
+
     free(temp);
+
+    return stack;
 
 }
 
 int getCount( List* stack )
 {
 
+	if ( stack == NULL ) return 0;
+
+	int count = 1;
+
+	while ( stack -> next != NULL)
+
+	{
+	    stack = stack -> next;
+
+	    count++;
+    }
+
+	return count;
 }
 
 List* Delete( List* stack )
 {
     struct List* temp = stack;
-    stack = stack -> next;
-    free(temp);
+
+    while ( ( stack -> next ) != 0)
+    {
+        temp = stack;
+
+        stack = stack -> next;
+
+        free(temp);
+    }
+
     return stack;
 }

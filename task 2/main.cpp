@@ -4,20 +4,38 @@
 
 int main()
 {
+
     struct List* stack = NULL;
-    if ( isEmpty(stack) )
+
+    if ( isEmpty( stack ) )
+
         printf ( "stack is empty \n" );
     else
-        printf ( "Stack is not empty \n" );
+        printf ( "stack is not empty \n" );
 
-    bool isEmpty(List* stack);
+    //fill stack
+    stack = Push ( stack, 54 );
+    stack = Push ( stack, 60 );
 
-    List* push( List* stack, int i );
+    //see function push works correctly
+    if ( isEmpty( stack ) )
 
-    int pop(List* stack);
+        printf ("Push works incorrectly, stack is still empty \n");
+    else
+        printf ("Push works correctly \n ");
 
+     printf ("%d", Pop( stack ) );
 
-    int getCount( List* stack );
+     printf ("%d", getCount( stack ) );
 
-    List* Delete( List* stack );
+     stack = Delete ( stack );
+
+     //see function Delete work
+     if ( isEmpty( stack ) )
+
+        printf ("Delete works correctly, stack is empty");
+     else
+        printf ("Delete works incorrectly");
+
+     return 0;
 }
