@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-#ifndef stack.h
-#define stack.h
+#ifndef STACK_H
+#define STACK_H
 
 struct List
 {
@@ -9,14 +11,14 @@ struct List
 	struct List* next;
 };
 
-bool isEmpty ( List* stack );
+    bool isEmpty ( struct List* stack );
 
-List* Push ( List* stack, int i );
+    struct List* Push ( struct List* stack, int i );
 
-int Pop(List** stack);
+    int Pop( struct List** stack );
 
-int getCount( List* stack );
+    int getCount( struct List* stack );
 
-List* Delete( List* stack );
+    struct List* Delete( struct List* stack );
 
 #endif

@@ -1,7 +1,7 @@
 
 #include "stack.h"
 
-bool isEmpty( List* stack )
+bool isEmpty( struct List* stack )
 {
     if ( stack == NULL )
         return true;
@@ -10,12 +10,12 @@ bool isEmpty( List* stack )
 }
 
 
-List* Push( List* stack, int i )
+struct List* Push( struct List* stack, int i )
 {
 
 	struct List* temp = stack;
 
-	stack = ( struct List ) calloc ( 1, sizeof( struct List ) );
+	stack = ( struct List* ) calloc ( 1, sizeof( struct List ) );
 
 	stack -> value = i;
 
@@ -25,19 +25,23 @@ List* Push( List* stack, int i )
 
 }
 
-int Pop(List** stack)
+int Pop( struct List** stack)
 {
-    struct List** temp = *stack;
+    int pop;
 
-    (*stack) = (*stack) -> next;
+    struct List* temp = *stack;
+
+    pop = temp -> value;
+
+    (*stack) = temp -> next;
 
     free(temp);
 
-    return stack;
+    return pop;
 
 }
 
-int getCount( List* stack )
+int getCount( struct List* stack )
 {
 
 	if ( stack == NULL ) return 0;
@@ -55,7 +59,7 @@ int getCount( List* stack )
 	return count;
 }
 
-List* Delete( List* stack )
+struct List* Delete( struct List* stack )
 {
     struct List* temp = stack;
 
@@ -67,6 +71,5 @@ List* Delete( List* stack )
 
         free(temp);
     }
-
-    return stack;
+    free(stack);
 }
