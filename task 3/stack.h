@@ -1,15 +1,8 @@
-//
-//  Header.h
-//  Stack
-//
-//  Created by Серкин Дмитрий on 09.10.14.
-//  Copyright (c) 2014 Серкин Дмитрий. All rights reserved.
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
+#include <string.h>
 
 
 struct List

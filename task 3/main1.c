@@ -3,52 +3,54 @@
 
 int main()
 {
-    int n, i=0, first_element, new_element ;
+    int n, i=0, temp ;
     bool check;
     struct List* stack;
     char rnp[10000];
     scanf ( "%s", rnp );
     n=strlen(rnp);
+
     for ( i; i<n; i++ )
     {
-
-        if ( ( i == 1 ) && ( ( rnp[i] != '+') || ( rnp[i] != '-') || ( rnp[i] != '/') || ( rnp[i] != '*') ) )
-
-            stack = create_stack( stack, rnp[i]-'0' , &check);
-
+        if ( ( rnp[i] >= '0' ) && ( rnp[i] <= '9' ) )
+        {
+           while ( ( rnp[i] != '+') || ( rnp[i] != '-') || ( rnp[i] != '/') || ( rnp[i] != '*') )
+           {
+               temp = temp * 10;
+               temp = temp + ( rnp[i] - '0');
+           }
+           stack = push ( stack, temp, &check);
+           temp = 0;
+        }
         else
         {
-            if ( ( i != 1 ) && ( ( rnp[i] != '+') || ( rnp[i] != '-') || ( rnp[i] != '/') || ( rnp[i] != '*') ) )
+            if ( rnp[i] == '+' )
 
-            stack = push( stack, rnp[i]-'0', &check);
+                push( stack, ( pop( &stack) + pop( &stack) ), &check );
 
             else
             {
-                if ( rnp[i] == '+' )
+                if ( rnp[i] == '-' )
 
-                    first_element = first_element + new_element;
+                    push( stack, -( pop( &stack) - pop( &stack) ), &check );
+
                 else
                 {
-                    if ( rnp[i] == '-' )
+                    if ( rnp[i] == '*' )
 
-                      first_element = first_element - new_element;
+                        push( stack, ( pop( &stack) * pop( &stack) ), &check );
+
                     else
                     {
-                        if ( rnp[i] == '*' )
+                        if ( rnp[i] == '/' )
 
-                          first_element = first_element * new_element;
-
-                          else
-                          {
-                              if ( rnp[i] == '/' )
-
-                                first_element = first_element / new_element;
-                          }
+                            push( stack, 1/( pop( &stack) / pop( &stack) ), &check );
                     }
                 }
             }
         }
     }
 
+  printf( "%d", pop( &stack) );
     return 0;
 }
