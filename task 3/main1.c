@@ -7,7 +7,7 @@ int main()
     bool check;
     struct List* stack;
     char rnp[10000];
-    scanf ( "%s", rnp );
+    gets(rnp);
     n=strlen(rnp);
 
     for ( i; i<n; i++ )
