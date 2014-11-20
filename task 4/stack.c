@@ -1,75 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#include "stack.h"
-
-/*bool isEmpty( struct List* stack )
+int main ()
 {
-    if ( stack == NULL )
-        return true;
-    else
-        return false;
-}
+     FILE* code = fopen("Code.exe","rb");
 
+    FILE* newsourse = fopen("NewSourse.txt","w");
 
-struct List* Push( struct List* stack, int i )
-{
+    int command;
 
-	struct List* temp = stack;
+    char valuestr[15];
 
-	stack = ( struct List* ) calloc ( 1, sizeof( struct List ) );
-
-	stack -> value = i;
-
-	stack -> next = temp;
-
-	return stack;
-
-}
-
-int Pop( struct List** stack)
-{
-    int pop;
-
-    struct List* temp = *stack;
-
-    pop = temp -> value;
-
-    (*stack) = temp -> next;
-
-    free(temp);
-
-    return pop;
-
-}
-
-int getCount( struct List* stack )
-{
-
-	if ( stack == NULL ) return 0;
-
-	int count = 1;
-
-	while ( stack -> next != NULL)
-
-	{
-	    stack = stack -> next;
-
-	    count++;
-    }
-
-	return count;
-}
-
-struct List* Delete( struct List* stack )
-{
-    struct List* temp = stack;
-
-    while ( ( stack -> next ) != 0)
+    while(!feof(code))
     {
-        temp = stack;
+        fscanf ( code, "%d", &command );
 
-        stack = stack -> next;
+        switch (command)
+        {
+            case 555:
 
-        free(temp);
+                fprintf (newsourse, "%s ", "push");
+
+                fscanf (code, "%s", valuestr);
+
+                fprintf (newsourse, "%s\n", valuestr);
+
+                break;
+            case 556 :
+
+                fprintf (newsourse, "%s\n", "pop");
+
+                break;
+            case 557:
+
+                fprintf (newsourse, "%s\n", "add");
+
+                break;
+            case 558:
+
+                fprintf (newsourse, "%s ", "mul");
+
+                break;
+            case 559:
+
+                fprintf (newsourse, "%s\n", "jmp");
+
+                break;
+            case 560:
+                fprintf (newsourse, "%s\n", "end");
+
+                fclose (newsourse);
+
+                fclose (code);
+
+                return 0;
+
+                break;
+        }
     }
-    free(stack);
-}*/
+
+    fclose (newsourse);
+
+    fclose (code);
+}
