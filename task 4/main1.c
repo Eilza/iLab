@@ -1,12 +1,18 @@
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
 
-int assembler ()
+enum {PUSH=555,POP=556,ADD=557,MUL=558,JMP=559,END=560};
+
+int main ()
 {
-    FILE* source = fopen ("Source.txt", "r");
+    FILE* sourse = fopen ("Sourse.txt", "r");
 
-    assert ( source != 0 );
+    assert ( sourse != 0 );
 
-    FILE* code = fopen ("Code.exe", "wb")
+    FILE* code = fopen ("Code.exe", "wb");
 
     char str[15], valuestr[15];
 
@@ -16,7 +22,7 @@ int assembler ()
 
         if (strcmp(str,"push") == 0 )
         {
-            fprintf (code, "%d ", 555);
+            fprintf (code, "%d", PUSH);
 
             fscanf (sourse, "%s", valuestr);
 
@@ -26,31 +32,35 @@ int assembler ()
         }
         else if (strcmp(str,"pop") == 0)
         {
-            fprintf (code, "%d ", 556);
+            fprintf (code, "%d ", POP);
 
             continue;
         }
         else if (strcmp(str,"add") == 0)
         {
-            fprintf (code, "%d ", 557);
+            fprintf (code, "%d ", ADD);
 
             continue;
         }
         else if (strcmp(str,"mul") == 0)
         {
-            fprintf (code, "%d ", 558);
+            fprintf (code, "%d ", MUL);
 
             continue;
         }
         else if (strcmp(str,"jmp") == 0)
         {
-            fprintf (code, "%d ", 559);
+            fprintf (code, "%d ", JMP);
+
+            fscanf (sourse, "%s", valuestr);
+
+            fprintf (code, "%s\n",valuestr);
 
             continue;
         }
         else if (strcmp(str,"end") == 0)
         {
-            fprintf (code, "%d\n", 560);
+            fprintf (code, "%d\n", END);
 
             fclose (sourse);
 
@@ -58,7 +68,7 @@ int assembler ()
 
             return 1;
         }
-        else if ( (strcmp(str, "\n") == 0 || strcmp(cmd, "") == 0) )
+        else if ( (strcmp(str, "\n") == 0 || strcmp(str, "") == 0) )
         {
             return -1;
         }
@@ -71,73 +81,8 @@ int assembler ()
              fclose (code);
         }
     }
-
-int disassembler()
-{
-    FILE* code = fopen("Code.exe","rb");
-
-    FILE* newsourse = fopen("NewSourse.txt","w");
-
-    int command;
-
-    char valuestr[15];
-
-    while(!feof(code))
-    {
-        fscanf ( code, "%d", &command );
-
-        switch (command)
-        {
-            case 555:
-
-                fprintf (newsourse, "%s ", push);
-
-                fscanf (code, "%s", valuestr);
-
-                fprintf (newsourse, "%s\n", valuestr);
-
-                break;
-            case 556 :
-
-                fprintf (newsourse, "%s\n", pop);
-
-                break;
-            case 557:
-
-                fprintf (newsourse, "%s\n", add);
-
-                break;
-            case 558:
-
-                fprintf (newsourse, "%s ", mul);
-
-                fscanf (code, "%s", valuestr);
-
-                fprintf (newsourse, "%s\n", valuestr);
-
-                break;
-            case 559:
-
-                fprintf (newsourse, "%s\n", jmp);
-
-                break;
-            case 560:
-                fprintf (newsourse, "%s\n", push);
-
-                fclose (newsourse);
-
-                fclose (code);
-
-                return 0;
-
-                break;
-        }
-    }
-
-    fclose (newsourse);
-
-    fclose (code);
 }
+
 
 
 
