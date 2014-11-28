@@ -4,9 +4,9 @@
 
 int main ()
 {
-     FILE* code = fopen("Code.exe","rb");
+     FILE* code = fopen("Code1.txt","r");
 
-    FILE* newsourse = fopen("NewSourse.txt","w");
+    FILE* newsourse = fopen("NewSourse1.txt","w");
 
     int command;
 
@@ -39,7 +39,7 @@ int main ()
                 break;
             case 558:
 
-                fprintf (newsourse, "%s ", "mul");
+                fprintf (newsourse, "%s\n", "mul");
 
                 break;
             case 559:
@@ -54,8 +54,6 @@ int main ()
 
                 fclose (code);
 
-                return 0;
-
                 break;
         }
     }
@@ -63,4 +61,6 @@ int main ()
     fclose (newsourse);
 
     fclose (code);
+
+    return 0;
 }
