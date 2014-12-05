@@ -1,6 +1,9 @@
 push 1
 push 1
+label 1
 add
 push 2
 mul
 pop
+push_AX 5
+cmp
